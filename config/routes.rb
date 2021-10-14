@@ -1,3 +1,11 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  namespace 'api' do 
+    namespace 'v1' do
+      get '/clients/:id', to: 'clients#show'
+
+      get '/clients/:id/balance', to: 'payments#show'
+
+      get '/clients/:id/transactions', to: 'transactions#show'
+    end
+  end
 end
