@@ -1,0 +1,3 @@
+:schedule:
+  AutomaticUpdate:
+    every: '2m'

@@ -5,4 +5,7 @@ class Payment < ApplicationRecord
   has_many :discounts
   belongs_to :client, primary_key: :client_id
   
+  scope :due_to_collect, -> { where("date > ?", Time.now) }
+  scope :collected, -> { where("date <= ?", Time.now) }
+
 end
