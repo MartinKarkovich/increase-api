@@ -3,14 +3,20 @@ module Api
     class TransactionsController < ApplicationController
 
       def show
-        @transactions = []
-        @discounts = []
-        @client.payments.each do |payment|
-          @transactions += payment.transactions
+        if @client
+          @transactions = []
+          @discounts = []
+          @client.payments.each do |payment|
+            @transactions += payment.transactions
+          end
+          @client.payments.each do |payment|
+            @discounts += payment.discounts
+          end
+
+        else
+          render template: 'api/v1/shared/_client_not_found.json.jbuilder', status: :not_found
         end
-        @client.payments.each do |payment|
-          @discounts += payment.discounts
-        end
+        
       end
 
     end    
