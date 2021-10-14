@@ -2,8 +2,8 @@
 class CreateClients < ActiveRecord::Migration[6.1]
   def change
     create_table :clients, id: false do |t|
-      t.string     :id, null: false
-      t.string     :email, null: false
+      t.string     :client_id, primary_key: true
+      t.string     :email
       t.string     :first_name
       t.string     :last_name
       t.string     :job
@@ -13,8 +13,7 @@ class CreateClients < ActiveRecord::Migration[6.1]
       t.string     :phone
 
       t.timestamps
+      
     end
-
-    add_index :clients, :id, unique: true
   end
 end
