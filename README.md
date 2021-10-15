@@ -1,24 +1,21 @@
-# README
+# Increase API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+ * [Endpoint Documentation](https://documenter.getpostman.com/view/13130072/UV5WCdGs)
 
-Things you may want to cover:
 
-* Ruby version
+To run this application you will need to have installed.
 
-* System dependencies
+* Ruby: 2.7.0
+* Rails: 6.1.4.1
+* Postgres: 12.8
 
-* Configuration
+# List of possible improvements
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Add proper exception handling
+* Dockerize app for easier deployment
+* Add validation (so far trusting that the data retrieved from the main API is trust-worthy)
+* Create either a currency model or enum for future scalability
+* Clean redundant code
+* Have all services under one Service module
+* Add testing
+* Etc.
