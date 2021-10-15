@@ -12,7 +12,10 @@
 
 ActiveRecord::Schema.define(version: 2021_10_11_233853) do
 
-  create_table "clients", primary_key: "client_id", id: :string, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "clients", primary_key: "client_id", id: :string, force: :cascade do |t|
     t.string "email"
     t.string "first_name"
     t.string "last_name"
@@ -25,7 +28,7 @@ ActiveRecord::Schema.define(version: 2021_10_11_233853) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "discounts", primary_key: "discount_id", id: :string, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "discounts", primary_key: "discount_id", id: :string, force: :cascade do |t|
     t.string "payment_id", null: false
     t.integer "amount"
     t.integer "discount_type"
@@ -34,7 +37,7 @@ ActiveRecord::Schema.define(version: 2021_10_11_233853) do
     t.index ["payment_id"], name: "index_discounts_on_payment_id"
   end
 
-  create_table "payments", primary_key: "payment_id", id: :string, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "payments", primary_key: "payment_id", id: :string, force: :cascade do |t|
     t.string "client_id", null: false
     t.string "currency"
     t.integer "full_amount"
@@ -46,7 +49,7 @@ ActiveRecord::Schema.define(version: 2021_10_11_233853) do
     t.index ["client_id"], name: "index_payments_on_client_id"
   end
 
-  create_table "transactions", primary_key: "transaction_id", id: :string, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "transactions", primary_key: "transaction_id", id: :string, force: :cascade do |t|
     t.string "payment_id", null: false
     t.integer "amount"
     t.integer "transaction_type"

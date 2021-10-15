@@ -1,33 +1,17 @@
-# MySQL. Versions 5.5.8 and up are supported.
-#
-# Install the MySQL driver
-#   gem install mysql2
-#
-# Ensure the MySQL gem is defined in your Gemfile
-#   gem 'mysql2'
-#
-# And be sure to use new-style password hashing:
-#   https://dev.mysql.com/doc/refman/5.7/en/password-hashing.html
-#
-default: &default
-  adapter: mysql2
-  encoding: utf8mb4
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: main_user
-  password: 123123
-  socket: /var/run/mysqld/mysqld.sock
-
 development:
-  <<: *default
-  database: IncreaseAPI_development
-
+  adapter: postgresql
+  encoding: unicode
+  database: increaseapi_development
+  pool: 5
+  username: increaseapi
+  password: password
+  host: localhost
 
 test:
-  <<: *default
-  database: IncreaseAPI_test
-
-
-production:
-  <<: *default
-  database: IncreaseAPI_production
-  password: <%= ENV['INCREASEAPI_DATABASE_PASSWORD'] %>
+  adapter: postgresql
+  encoding: unicode
+  database: increaseapi_test
+  pool: 5
+  username: increaseapi
+  password: password
+  host: localhost
