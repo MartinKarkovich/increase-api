@@ -7,5 +7,6 @@ class Payment < ApplicationRecord
   
   scope :due_to_collect, -> { where("date > ?", Time.now) }
   scope :collected, -> { where("date <= ?", Time.now) }
-
+  scope :usd, -> { where("currency = ?","001")}
+  scope :ars, -> { where("currency = ?","000")}
 end
